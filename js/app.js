@@ -1,29 +1,27 @@
- let amigos = [];
+let amigos = [];
+let campoListaAmigos = document.getElementById('lista-amigos');
+let campoListaSorteio = document.getElementById('lista-sorteio');
 
 function adicionar() {
-   
-    nomeamigo = document.getElementById('nome-amigo');
-   nome = nomeamigo.value.trim(); 
-   if (nome === "") return; 
-    console.log(nome);
+    let campoNome = document.getElementById('nome-amigo');
+    let nome = campoNome.value.trim();
+    if (nome === "") {return;}
     amigos.push(nome);
-
-    console.log(amigos); 
-    let campoListaAmigos = document.getElementById('lista-amigos');
     campoListaAmigos.textContent = amigos.join(', ');
-
-    nomeamigo.value = '';
+    campoNome.value = '';
 }
 
 function sortear() {
-
- if (amigos.length < 2) {
-        alert('Adicione pelo menos 2 amigos!');
-        return;
-
+    if (amigos.length < 2) { alert('Adicione pelo menos 2 amigos!'); return;}
+    let indice = Math.floor(Math.random() * amigos.length);
+    let nomeSorteado = amigos[indice];
+    console.log("Índice:", indice, "| Nome sorteado:", nomeSorteado);
+    campoListaSorteio.textContent = nomeSorteado;
 }
 
-amigos.sort(() => Math.random() - 0.5);
- let sorteado;
-  sorteado = amigos[0];
+function reiniciar() {
+    amigos = [];
+    campoListaAmigos.textContent = '';
+    campoListaSorteio.textContent = '';
+    document.getElementById('nome-amigo').value = '';
 }
