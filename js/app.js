@@ -1,12 +1,29 @@
- let nome = document.getElementById("lista-amigos").value
- let idade = document.getElementById("lista-sorteio").value;
  let amigos = [];
 
-function adicionar () {
-
-    const inputAmigo = document.getElementById('nome-amigo');
-    const nome = inputAmigo.value.trim();
+function adicionar() {
+   
+    nomeamigo = document.getElementById('nome-amigo');
+   nome = nomeamigo.value.trim(); 
+   if (nome === "") return; 
+    console.log(nome);
     amigos.push(nome);
 
+    console.log(amigos); 
+    let campoListaAmigos = document.getElementById('lista-amigos');
+    campoListaAmigos.textContent = amigos.join(', ');
+
+    nomeamigo.value = '';
 }
-  
+
+function sortear() {
+
+ if (amigos.length < 2) {
+        alert('Adicione pelo menos 2 amigos!');
+        return;
+
+}
+
+amigos.sort(() => Math.random() - 0.5);
+ let sorteado;
+  sorteado = amigos[0];
+}
